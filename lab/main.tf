@@ -4,7 +4,7 @@ module "tags_network" {
   source      = "git::https://github.com/cloudposse/terraform-null-label.git"
   namespace   = var.name
   environment = "dev"
-  name        = "devops-bootcamp"
+  name        = "awraad-devops-bootcamp"
   delimiter   = "_"
 
   tags = {
@@ -17,7 +17,7 @@ module "tags_bastion" {
   source      = "git::https://github.com/cloudposse/terraform-null-label.git"
   namespace   = var.name
   environment = "dev"
-  name        = "basion-devops-bootcamp"
+  name        = "awraad-basion-devops-bootcamp"
   delimiter   = "_"
 
   tags = {
@@ -30,7 +30,7 @@ module "tags_webserver" {
   source      = "git::https://github.com/cloudposse/terraform-null-label.git"
   namespace   = var.name
   environment = "dev"
-  name        = "webserver-devops-bootcamp"
+  name        = "awraad-webserver-devops-bootcamp"
   delimiter   = "_"
 
   tags = {
@@ -55,8 +55,8 @@ resource "aws_vpc" "lab" {
   enable_dns_hostnames = true
 }
 
-resource "aws_route53_zone" "bryan_dobc" {
-  name = "bryan.dobc"
+resource "aws_route53_zone" "awraad_dobc" {
+  name = "awraad.dobc"
   tags = module.tags_network.tags
 
   vpc {
@@ -155,7 +155,7 @@ resource "aws_key_pair" "lab_keypair" {
 }
 
 resource "aws_route53_record" "webserver" {
-  zone_id = aws_route53_zone.bryan_dobc.id
+  zone_id = aws_route53_zone.awraad_dobc.id
   name    = "webserver"
   type    = "A"
   ttl     = 300
