@@ -23,11 +23,11 @@ pipeline {
       stage("workspace") {
           steps {
               sh """ 
-if [[ \$? -ne 0 ]]; then
+
 terraform workspace new jenkins-lab-2
-fi
+
 terraform workspace select jenkins-lab-2
-"""
+
           }
       }
       stage("plan") {
